@@ -68,7 +68,7 @@ if(isset($_POST['search'])){
   require_once 'PHP/dbhelper.php';
   $searchq=$_POST['Search'];
   $searchq= preg_replace("#[^0-9a-z]#i","", $searchq);
-$query=mysqli_query($db_connection,"SELECT * FROM db_clients LEFT OUTER JOIN db_deadreg ON db_clients.clientID=db_deadreg.clientID where db_clients.fullname like '%$searchq%'");
+$query=mysqli_query($db_connection,"SELECT db_clients.clientID,db_clients.fullname,db_clients.contact,db_clients.address,db_clients.SRent,db_clients.ERent,db_deadreg.deceasedID,db_deadreg.Firstname,db_deadreg.Lastname FROM db_clients LEFT OUTER JOIN db_deadreg ON db_clients.clientID=db_deadreg.clientID where db_clients.fullname like '%$searchq%'");
 
   //$count=mysqli_num_rows($query);
   if(1==2){
